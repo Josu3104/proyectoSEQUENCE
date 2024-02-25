@@ -28,5 +28,4 @@ public class Usuario implements Serializable{
         fechaCreacion = new Date();
         this.password = password;
     }
-
 }

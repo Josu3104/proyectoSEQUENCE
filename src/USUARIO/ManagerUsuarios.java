@@ -45,12 +45,13 @@ public class ManagerUsuarios {
         System.out.println("EXISTE");
     }
 //SERIALIZAR
+
     private void createDefaults() throws IOException {
 
-        Usuario usOne = new Usuario("ERICK","PlayerOne", "default");
-        Usuario usTwo = new Usuario("IAN","PlayerTwo", "default");
-        Usuario usThree = new Usuario("VALERIE","PlayerThree", "default");
-        Usuario usFour = new Usuario("SANTIAGO","PlayerFour", "default");
+        Usuario usOne = new Usuario("ERICK", "PlayerOne", "default");
+        Usuario usTwo = new Usuario("IAN", "PlayerTwo", "default");
+        Usuario usThree = new Usuario("VALERIE", "PlayerThree", "default");
+        Usuario usFour = new Usuario("SANTIAGO", "PlayerFour", "default");
 
         ByteArrayOutputStream ByteCereal = new ByteArrayOutputStream();
         ObjectOutputStream ObjectCereal = new ObjectOutputStream(ByteCereal);
@@ -62,55 +63,45 @@ public class ManagerUsuarios {
         RAF.write(spaghetifier1);
         ByteArrayOutputStream ByteCereal2 = new ByteArrayOutputStream();
         ObjectOutputStream ObjectCereal2 = new ObjectOutputStream(ByteCereal2);
-
+        RAF.seek(RAF.getFilePointer());
         ObjectCereal2.writeObject(usTwo);
         byte[] spaghetifier2 = ByteCereal2.toByteArray();
         RAF.writeInt(spaghetifier2.length);
         RAF.write(spaghetifier2);
         ByteArrayOutputStream ByteCereal3 = new ByteArrayOutputStream();
         ObjectOutputStream ObjectCereal3 = new ObjectOutputStream(ByteCereal3);
-
+        RAF.seek(RAF.getFilePointer());
         ObjectCereal3.writeObject(usThree);
         byte[] spaghetifier3 = ByteCereal3.toByteArray();
         RAF.writeInt(spaghetifier3.length);
         RAF.write(spaghetifier3);
         ByteArrayOutputStream ByteCereal4 = new ByteArrayOutputStream();
         ObjectOutputStream ObjectCereal4 = new ObjectOutputStream(ByteCereal4);
-
+        RAF.seek(RAF.getFilePointer());
         ObjectCereal4.writeObject(usFour);
         byte[] spaghetifier4 = ByteCereal4.toByteArray();
         RAF.writeInt(spaghetifier4.length);
         RAF.write(spaghetifier4);
 
     }
-    
-    
-    
-    
-    
-    
-    
-    private void UserSerializer(Usuario user) throws IOException{
-         ByteArrayOutputStream ByteCereal = new ByteArrayOutputStream();
+
+    public void UserSerializer(Usuario user) throws IOException {
+        ByteArrayOutputStream ByteCereal = new ByteArrayOutputStream();
         ObjectOutputStream ObjectCereal = new ObjectOutputStream(ByteCereal);
-        
+
         RAF.seek(RAF.length());
         ObjectCereal.writeObject(user);
         byte[] spaghetifier = ByteCereal.toByteArray();
         RAF.writeInt(spaghetifier.length);
         RAF.write(spaghetifier);
+
+    }
+    
+    public void UserDeserializer(){
         
-    } 
-    
-    
-    
-    
-    
-    
-    
-    
-    
- //DESERIALIZAR
+    }
+
+    //DESERIALIZAR
     public void Search() throws IOException, ClassNotFoundException {
         ObjectInputStream ObjectCereal;
         ByteArrayInputStream ByteCereal;
