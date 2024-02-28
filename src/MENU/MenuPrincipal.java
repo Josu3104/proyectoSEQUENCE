@@ -25,9 +25,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setExtendedState(MAXIMIZED_BOTH);
+        this.setExtendedState(this.MAXIMIZED_BOTH);
         this.REG_TAB.setVisible(false);
         this.PLAY_TAB.setVisible(false);
+        //this.setSize(1920,1080);
+        
 
         try {
             managerUsers = new ManagerUsuarios();
@@ -48,10 +50,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MAIN_MENU = new javax.swing.JPanel();
-        REGISTER = new javax.swing.JButton();
-        LOGIN = new javax.swing.JButton();
-        PLAY = new javax.swing.JButton();
         REG_TAB = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,6 +60,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Reg_Checkout = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         confPass = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        MAIN_MENU = new javax.swing.JPanel();
+        REGISTER = new javax.swing.JButton();
+        LOGIN = new javax.swing.JButton();
+        PLAY = new javax.swing.JButton();
         PLAY_TAB = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -74,6 +77,67 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        REG_TAB.setBackground(new java.awt.Color(51, 0, 0));
+        REG_TAB.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        REG_TAB.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("NOMBRE COMPLETO:");
+        REG_TAB.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 350, 80));
+
+        jLabel2.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("USUARIO:");
+        REG_TAB.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 230, 80));
+
+        jLabel3.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("CONTRASEñA:");
+        REG_TAB.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, 230, 80));
+
+        us.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        us.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        REG_TAB.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 550, 80));
+
+        pass.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        pass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        REG_TAB.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, 550, 80));
+
+        fullName.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        fullName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        REG_TAB.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 550, 80));
+
+        Reg_Checkout.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        Reg_Checkout.setText("REGISTRARSE");
+        Reg_Checkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Reg_CheckoutActionPerformed(evt);
+            }
+        });
+        REG_TAB.add(Reg_Checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 630, 290, 80));
+
+        jLabel7.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("CONFIRMAR CONTRASEñA:");
+        REG_TAB.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 440, 80));
+
+        confPass.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        confPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        REG_TAB.add(confPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 550, 80));
+
+        jButton1.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jButton1.setText("VOLVER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        REG_TAB.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 740, 200, 50));
+
+        getContentPane().add(REG_TAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         MAIN_MENU.setBackground(new java.awt.Color(51, 0, 0));
         MAIN_MENU.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -86,11 +150,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 REGISTERActionPerformed(evt);
             }
         });
-        MAIN_MENU.add(REGISTER, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 330, 90));
+        MAIN_MENU.add(REGISTER, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 330, 90));
 
         LOGIN.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         LOGIN.setText("INICIO DE SESION");
-        MAIN_MENU.add(LOGIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 330, 90));
+        MAIN_MENU.add(LOGIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 330, 90));
 
         PLAY.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         PLAY.setText("JUGAR");
@@ -99,52 +163,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 PLAYActionPerformed(evt);
             }
         });
-        MAIN_MENU.add(PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 610, 330, 90));
+        MAIN_MENU.add(PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 540, 330, 90));
 
-        REG_TAB.setBackground(new java.awt.Color(51, 0, 0));
-        REG_TAB.setPreferredSize(new java.awt.Dimension(1920, 1080));
-        REG_TAB.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        jLabel1.setText("NOMBRE COMPLETO");
-        REG_TAB.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 350, 100));
-
-        jLabel2.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        jLabel2.setText("USUARIO");
-        REG_TAB.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 230, 100));
-
-        jLabel3.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        jLabel3.setText("CONTRASEñA");
-        REG_TAB.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 230, 100));
-
-        us.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        us.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        REG_TAB.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 550, 80));
-
-        pass.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        pass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        REG_TAB.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 540, 550, 80));
-
-        fullName.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        fullName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        REG_TAB.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, 550, 80));
-
-        Reg_Checkout.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        Reg_Checkout.setText("REGISTRARSE");
-        Reg_Checkout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Reg_CheckoutActionPerformed(evt);
-            }
-        });
-        REG_TAB.add(Reg_Checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 780, 330, 90));
-
-        jLabel7.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        jLabel7.setText("CONFIRMAR CONTRASEñA");
-        REG_TAB.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 640, 430, 100));
-
-        confPass.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        confPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        REG_TAB.add(confPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 650, 550, 80));
+        getContentPane().add(MAIN_MENU, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         PLAY_TAB.setBackground(new java.awt.Color(51, 0, 0));
         PLAY_TAB.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -178,46 +199,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Reg_Checkout1.setText("REGISTRARSE");
         PLAY_TAB.add(Reg_Checkout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 690, 330, 90));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1920, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(REG_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(PLAY_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(MAIN_MENU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(REG_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(PLAY_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(MAIN_MENU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(PLAY_TAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,6 +225,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             name = this.fullName.getText();
             user = this.us.getText();
             pw = this.pass.getText();
+            if(name.isEmpty() || user.isEmpty() || pw.isEmpty()){
+                JOptionPane.showMessageDialog(null, "LLENE TODOS LOS CAMPOS");
+            }else
             if (name != null && user != null && pw != null&&confPass!=null) {
                 if (managerUsers.SearchUser(user)==null) {
                     if(!confPass.getText().equals(pass.getText())){
@@ -255,9 +240,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO EN USO");
                 }
-
-            } else {
-                JOptionPane.showMessageDialog(null, "LLENE TODOS LOS CAMPOS");
             }
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
@@ -265,6 +247,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_Reg_CheckoutActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.REG_TAB.setVisible(false);
+        this.MAIN_MENU.setVisible(true);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,6 +302,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField confPass;
     private javax.swing.JTextField fullName;
     private javax.swing.JTextField fullName1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
