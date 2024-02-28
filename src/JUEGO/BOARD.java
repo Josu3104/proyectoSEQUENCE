@@ -21,6 +21,7 @@ public class BOARD extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         b = new boardManager();
         b.initBoard(tablero);
+        tablero.setLocation(330, 190);
 
     }
 
@@ -35,30 +36,36 @@ public class BOARD extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         tablero = new javax.swing.JPanel();
+        check = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tablero.setPreferredSize(new java.awt.Dimension(1100, 700));
         tablero.setLayout(null);
-        jPanel1.add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 1330, 830));
+        jPanel1.add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 1260, 700));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        check.setText("checker");
+        check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkActionPerformed(evt);
+            }
+        });
+        jPanel1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 150, 70));
+
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
+      b.SequenceFinder();
+    }//GEN-LAST:event_checkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,6 +103,7 @@ public class BOARD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton check;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel tablero;
     // End of variables declaration//GEN-END:variables

@@ -6,7 +6,9 @@ package MENU;
 
 import JUEGO.BOARD;
 import USUARIO.ManagerUsuarios;
+import USUARIO.Usuario;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,6 +60,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pass = new javax.swing.JTextField();
         fullName = new javax.swing.JTextField();
         Reg_Checkout = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        confPass = new javax.swing.JTextField();
         PLAY_TAB = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -115,7 +119,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         us.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         us.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        REG_TAB.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, 550, 80));
+        REG_TAB.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 550, 80));
 
         pass.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         pass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -127,7 +131,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Reg_Checkout.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         Reg_Checkout.setText("REGISTRARSE");
-        REG_TAB.add(Reg_Checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 690, 330, 90));
+        Reg_Checkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Reg_CheckoutActionPerformed(evt);
+            }
+        });
+        REG_TAB.add(Reg_Checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 780, 330, 90));
+
+        jLabel7.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel7.setText("CONFIRMAR CONTRASEñA");
+        REG_TAB.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 640, 430, 100));
+
+        confPass.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        confPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        REG_TAB.add(confPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 650, 550, 80));
 
         PLAY_TAB.setBackground(new java.awt.Color(51, 0, 0));
         PLAY_TAB.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -208,7 +225,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void REGISTERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGISTERActionPerformed
         this.REG_TAB.setVisible(true);
         this.MAIN_MENU.setVisible(false);
-        
+
     }//GEN-LAST:event_REGISTERActionPerformed
 
     private void PLAYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLAYActionPerformed
@@ -217,8 +234,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         BOARD game = new BOARD();
         game.setVisible(true);
-        
+
     }//GEN-LAST:event_PLAYActionPerformed
+
+    private void Reg_CheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Reg_CheckoutActionPerformed
+        try {
+            String name, user, pw;
+            name = this.fullName.getText();
+            user = this.us.getText();
+            pw = this.pass.getText();
+            if (name != null && user != null && pw != null&&confPass!=null) {
+                if (managerUsers.SearchUser(user)==null) {
+                    if(!confPass.getText().equals(pass.getText())){
+                        JOptionPane.showMessageDialog(null, "LAS CONTRASEñA NO COINCIDE");
+                        return;
+                    }
+                    managerUsers.Serializer(new Usuario(name, user, pw));
+                    JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO");
+                    System.out.println(managerUsers.SearchUser(user).getNAME() + " Has been Registered");
+                }else{
+                    JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO EN USO");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "LLENE TODOS LOS CAMPOS");
+            }
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+    }//GEN-LAST:event_Reg_CheckoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +310,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel REG_TAB;
     private javax.swing.JButton Reg_Checkout;
     private javax.swing.JButton Reg_Checkout1;
+    private javax.swing.JTextField confPass;
     private javax.swing.JTextField fullName;
     private javax.swing.JTextField fullName1;
     private javax.swing.JLabel jLabel1;
@@ -272,6 +319,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField pass;
     private javax.swing.JTextField pass1;
     private javax.swing.JTextField us;

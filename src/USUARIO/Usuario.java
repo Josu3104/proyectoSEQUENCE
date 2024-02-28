@@ -12,20 +12,50 @@ import java.util.Date;
  *
  * @author Josue Gavidia
  */
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
     protected String NAME;
     protected String username;
     protected int puntos;
     protected Date fechaCreacion;
     protected String password;
+    protected int team;
     protected ArrayList<String> historial;
 
-    public Usuario(String name,String user, String password) {
+    public Usuario(String name, String user, String password) {
         this.NAME = name;
         username = user;
         puntos = 0;
         fechaCreacion = new Date();
         this.password = password;
     }
+
+    public int getTeam() {
+        return team;
+    }
+
+    public String getNAME() {
+        return NAME;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public ArrayList<String> getHistorial() {
+        return historial;
+    }
+
 }

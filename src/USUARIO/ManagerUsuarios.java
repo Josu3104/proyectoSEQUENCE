@@ -27,10 +27,9 @@ public class ManagerUsuarios {
 
     public ManagerUsuarios() throws IOException, ClassNotFoundException {
         F = new File(path);
-        RAF = new RandomAccessFile(path + "/usuarios.onion", "rw");
         this.createUserFolder();
         createDefaults();
-        Search();
+      
 
     }
 
@@ -38,54 +37,31 @@ public class ManagerUsuarios {
         if (!F.exists()) {
 
             F.mkdir();
-            RAF = new RandomAccessFile(path + "/usuarios.onion", "rw");
-            System.out.println("CREADO");
-            return;
+            System.out.println("Folder Usuarios ");
         }
-        System.out.println("EXISTE");
+        RAF = new RandomAccessFile(path + "/usuarios.onion", "rw");
+
     }
-//SERIALIZAR
 
     private void createDefaults() throws IOException {
 
-        Usuario usOne = new Usuario("ERICK", "PlayerOne", "default");
-        Usuario usTwo = new Usuario("IAN", "PlayerTwo", "default");
-        Usuario usThree = new Usuario("VALERIE", "PlayerThree", "default");
-        Usuario usFour = new Usuario("SANTIAGO", "PlayerFour", "default");
+        Usuario usOne = new Usuario("ERICK", "Player 1", "default");
+        Usuario usTwo = new Usuario("IAN", "Player 2", "default");
+        Usuario usThree = new Usuario("VALERIE", "Player 3", "default");
+        Usuario usFour = new Usuario("SANTIAGO", "Player 4", "default");
 
         ByteArrayOutputStream ByteCereal = new ByteArrayOutputStream();
         ObjectOutputStream ObjectCereal = new ObjectOutputStream(ByteCereal);
 
-        RAF.seek(0);
-        ObjectCereal.writeObject(usOne);
-        byte[] spaghetifier1 = ByteCereal.toByteArray();
-        RAF.writeInt(spaghetifier1.length);
-        RAF.write(spaghetifier1);
-        ByteArrayOutputStream ByteCereal2 = new ByteArrayOutputStream();
-        ObjectOutputStream ObjectCereal2 = new ObjectOutputStream(ByteCereal2);
-        RAF.seek(RAF.getFilePointer());
-        ObjectCereal2.writeObject(usTwo);
-        byte[] spaghetifier2 = ByteCereal2.toByteArray();
-        RAF.writeInt(spaghetifier2.length);
-        RAF.write(spaghetifier2);
-        ByteArrayOutputStream ByteCereal3 = new ByteArrayOutputStream();
-        ObjectOutputStream ObjectCereal3 = new ObjectOutputStream(ByteCereal3);
-        RAF.seek(RAF.getFilePointer());
-        ObjectCereal3.writeObject(usThree);
-        byte[] spaghetifier3 = ByteCereal3.toByteArray();
-        RAF.writeInt(spaghetifier3.length);
-        RAF.write(spaghetifier3);
-        ByteArrayOutputStream ByteCereal4 = new ByteArrayOutputStream();
-        ObjectOutputStream ObjectCereal4 = new ObjectOutputStream(ByteCereal4);
-        RAF.seek(RAF.getFilePointer());
-        ObjectCereal4.writeObject(usFour);
-        byte[] spaghetifier4 = ByteCereal4.toByteArray();
-        RAF.writeInt(spaghetifier4.length);
-        RAF.write(spaghetifier4);
+        Serializer(usOne);
+        Serializer(usTwo);
+        Serializer(usThree);
+        Serializer(usFour);
 
     }
+//SERIALIZAR
 
-    public void UserSerializer(Usuario user) throws IOException {
+    public void Serializer(Usuario user) throws IOException {
         ByteArrayOutputStream ByteCereal = new ByteArrayOutputStream();
         ObjectOutputStream ObjectCereal = new ObjectOutputStream(ByteCereal);
 
@@ -96,49 +72,42 @@ public class ManagerUsuarios {
         RAF.write(spaghetifier);
 
     }
-    
-    public void UserDeserializer(){
-        
-    }
 
+    public Usuario SearchUser(String username) throws IOException, ClassNotFoundException {
+        return DeSerializer(username, 0);
+    }
+    //RECURSIVA
     //DESERIALIZAR
-    public void Search() throws IOException, ClassNotFoundException {
+// i + 4 +tamaño
+    private Usuario DeSerializer(String username, long index) throws IOException, ClassNotFoundException {
         ObjectInputStream ObjectCereal;
         ByteArrayInputStream ByteCereal;
         byte[] temp;
         Usuario tempUser;
 
-        RAF.seek(0);
+        if (index < RAF.length()) {
+            
 
-        temp = new byte[RAF.readInt()];
-        RAF.readFully(temp);
+            RAF.seek(index);
+            int ObjectSize = RAF.readInt();
+            temp = new byte[ObjectSize];
+            RAF.readFully(temp);
 
-        ByteCereal = new ByteArrayInputStream(temp);
-        ObjectCereal = new ObjectInputStream(ByteCereal);
+            ByteCereal = new ByteArrayInputStream(temp);
+            ObjectCereal = new ObjectInputStream(ByteCereal);
+            tempUser = (Usuario) ObjectCereal.readObject();
 
-        tempUser = (Usuario) ObjectCereal.readObject();
-        System.out.println(tempUser.NAME + " " + tempUser.password);
-        RAF.seek(RAF.getFilePointer());
-        temp = new byte[RAF.readInt()];
-        RAF.readFully(temp);
-        ByteCereal = new ByteArrayInputStream(temp);
-        ObjectCereal = new ObjectInputStream(ByteCereal);
-        tempUser = (Usuario) ObjectCereal.readObject();
-        System.out.println(tempUser.NAME + " " + tempUser.password);
-        RAF.seek(RAF.getFilePointer());
-        temp = new byte[RAF.readInt()];
-        RAF.readFully(temp);
-        ByteCereal = new ByteArrayInputStream(temp);
-        ObjectCereal = new ObjectInputStream(ByteCereal);
-        tempUser = (Usuario) ObjectCereal.readObject();
-        System.out.println(tempUser.NAME + " " + tempUser.password);
-        RAF.seek(RAF.getFilePointer());
-        temp = new byte[RAF.readInt()];
-        RAF.readFully(temp);
-        ByteCereal = new ByteArrayInputStream(temp);
-        ObjectCereal = new ObjectInputStream(ByteCereal);
-        tempUser = (Usuario) ObjectCereal.readObject();
-        System.out.println(tempUser.NAME + " " + tempUser.password);
+            if (tempUser!=null&&tempUser.getUsername().equals(username)) {
+                return tempUser;
+            } else {
+                return DeSerializer(username, index+4+ObjectSize);
+            }
+
+        }
+        System.out.println("Not found");
+        return null;
 
     }
+
+   
 }
