@@ -48,7 +48,7 @@ public class BOARD extends javax.swing.JFrame {
 
         tablero.setPreferredSize(new java.awt.Dimension(1100, 700));
         tablero.setLayout(null);
-        jPanel1.add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 1260, 700));
+        jPanel1.add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 1210, 630));
 
         check.setText("checker");
         check.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +56,7 @@ public class BOARD extends javax.swing.JFrame {
                 checkActionPerformed(evt);
             }
         });
-        jPanel1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 150, 70));
+        jPanel1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(1370, 30, 150, 70));
 
         getContentPane().add(jPanel1);
 
